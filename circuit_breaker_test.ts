@@ -2,11 +2,8 @@ import { assert, assertEquals, assertThrows, assertThrowsAsync } from "https://d
 import { CircuitBreaker, State } from './circuit_breaker.ts';
 import { SimpleValidator } from './validators/simple_circuit_validator.ts';
 import { Validator } from './interfaces/validator.ts'
-import { Greeter } from './greeter.ts'
 
 Deno.test("validate error throw", async function (): Promise<void> {
-
-    let greeter = new Greeter("world");
 
     const validator = <Validator>new SimpleValidator({ closeTimeout: 0 });
     const circuitBreaker = new CircuitBreaker(validator);
